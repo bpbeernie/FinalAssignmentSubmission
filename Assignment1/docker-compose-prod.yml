@@ -1,0 +1,31 @@
+﻿version: "3"
+services:
+    mssqlserver:
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+        volumes:
+           - sqlvolume:/var/opt/mssql
+        environment:
+            SA_PASSWORD: "Password123_"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express
+        networks:
+          - assignmentnetwork
+    taskapi:
+        image: bpbeernie/taskapi
+        ports:
+            - "8000:80"
+        depends_on:
+            - mssqlserver
+        environment:
+            DBServer: "mssqlserver"
+            DBPort: "1433"
+            DBUser: "SA"
+            DBPassword: "Password123_"
+            Database: "Tasks"
+        networks:
+            - assignmentnetwork
+volumes:
+    sqlvolume:
+networks:
+    assignmentnetwork:
+        driver: bridge
