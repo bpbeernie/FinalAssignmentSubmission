@@ -12,7 +12,7 @@
 
 - bpbeernie/tester is in my repository so to run the tester, you can just do step 5 if you already know the IP Address of the taskAPI service.
 
-- If you to call the endpoints via a web browser, simply enter the following urls depending on whether you're running the development or production versions of the taskAPI service.
+- If you want to call the endpoints via a web browser or Postman, simply enter the following urls depending on whether you're running the development or production versions of the taskAPI service.
 > localhost:5003/api/tasks
 > localhost:5005/api/tasks 
 
@@ -61,6 +61,14 @@ To build tester.
 5. With IP address from 2., RUN 
 
 > docker run --rm  --env TESTURL=<<IP Address>> --network assignment1_assignmentnetwork -t bpbeernie/tester
+
+==========   Cleanup   ==========
+
+1. CD to Assignment1 folder
+
+2. RUN
+
+> docker-compose down
 
 ==========   Challenges   ==========
 
