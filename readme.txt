@@ -7,7 +7,7 @@
 - Your ports 5003 and 5005 are free.
 
 - You're not going to try to run the developer and production versions side by side. In fact, because I'm paranoid, I run the following commands before running any commands...
-> sudo snap remove docker
+> sudo snap remove --purge docker
 > sudo snap install docker
 
 - bpbeernie/tester is in my repository so to run the tester, you can just do step 5 if you already know the IP Address of the taskAPI service.
