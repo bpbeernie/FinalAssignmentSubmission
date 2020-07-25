@@ -20,7 +20,7 @@ B. To run Production API
 
 C. To run Tester
 
-1. CD to AssignmentTester folder
+1. In a new terminal, CD to AssignmentTester folder
 
 2. RUN 
 
