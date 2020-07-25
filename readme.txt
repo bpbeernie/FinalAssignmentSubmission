@@ -64,4 +64,4 @@ To build tester.
 
 ==========   Challenges   ==========
 
-- I had huge issues when trying to connect my TaskAPI to the sql database. Usually, I'd get some vague error about login failed or handshake failed that could only inconsistenly reproduce and I didn't understand it. Eventually, I realized that the database needed time to startup and be ready to accept connections and the exissting mechanisms (ie., dependson in docker-compose.yml) simply didn't allow for that. I ended up adding an additional check on the .NET core side to double check the database is up before trying to establish a connection.
+- I had huge issues when trying to connect my TaskAPI to the sql database. Usually, I'd get some vague error about login failed or handshake failed that could only inconsistenly reproduce and I didn't understand it. Eventually, I realized that the database needed time to startup and be ready to accept connections and the existing mechanisms (ie., dependson in docker-compose.yml) simply didn't allow for that reliably. I ended up adding an additional check on the .NET core side to double check the database is up before trying to establish a connection.
