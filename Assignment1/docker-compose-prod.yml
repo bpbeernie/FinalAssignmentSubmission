@@ -1,25 +1,27 @@
 ﻿version: "3"
 services:
-    mssqlserver:
-        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    db:
+        image: mariadb
         volumes:
-           - sqlvolume:/var/opt/mssql
+           - sqlvolume:/var/lib/mysql
         environment:
-            SA_PASSWORD: "Password123_"
-            ACCEPT_EULA: "Y"
-            MSSQL_PID: Express
+            MYSQL_ROOT_PASSWORD: Password123_
+            MYSQL_DATABASE: Tasks
         networks:
-          - assignmentnetwork
+            - assignmentnetwork
+        restart: always
+        ports:
+            - 3305:3306
     taskapi:
         image: bpbeernie/taskapi
         ports:
-            - "8000:80"
+            - "5005:80"
         depends_on:
-            - mssqlserver
+            - db
         environment:
-            DBServer: "mssqlserver"
-            DBPort: "1433"
-            DBUser: "SA"
+            DBServer: "db"
+            DBPort: "3306"
+            DBUser: "root"
             DBPassword: "Password123_"
             Database: "Tasks"
         networks:
