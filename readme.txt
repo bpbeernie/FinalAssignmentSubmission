@@ -1,4 +1,22 @@
-Instructions
+==========   Assumptions   ==========
+
+- You are running this project in a linux box with enough resources allocated to it to compile and run docker images.
+
+- You have everything setup before hand to run docker and docker-compose
+
+- Your ports 5003 and 5005 are free.
+
+- You're not going to try to run the developer and production versions side by side. In fact, because I'm paranoid, I run the following commands before running any commands...
+> sudo snap remove docker
+> sudo snap install docker
+
+- bpbeernie/tester is in my repository so to run the tester, you can just do step 5 if you already know the IP Address of the taskAPI service.
+
+- If you to call the endpoints via a web browser, simply enter the following urls depending on whether you're running the development or production versions of the taskAPI service.
+> localhost:5003/api/tasks
+> localhost:5005/api/tasks 
+
+==========   Instructions   ==========
 
 A. To run API
 
@@ -44,5 +62,6 @@ To build tester.
 
 > docker run --rm  --env TESTURL=<<IP Address>> --network assignment1_assignmentnetwork -t bpbeernie/tester
 
+==========   Challenges   ==========
 
-
+- I had huge issues when trying to connect my TaskAPI to the sql database. Usually, I'd get some vague error about login failed or handshake failed that could only inconsistenly reproduce and I didn't understand it. Eventually, I realized that the database needed time to startup and be ready to accept connections and the exissting mechanisms (ie., dependson in docker-compose.yml) simply didn't allow for that. I ended up adding an additional check on the .NET core side to double check the database is up before trying to establish a connection.
