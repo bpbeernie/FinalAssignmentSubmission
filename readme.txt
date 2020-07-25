@@ -64,6 +64,10 @@ To build tester.
 
 ==========   Cleanup   ==========
 
+1. CD to Assignment1 folder
+
+2. RUN
+
 > docker-compose down
 
 ==========   Challenges   ==========
